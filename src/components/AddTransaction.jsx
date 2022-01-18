@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { GlobalContext } from "../context/GlobalState"
-import { useFormik } from "formik"
+import { Formik, Field, Form, ErrorMessage } from "formik"
 import * as Yup from "yup"
 
 const validationSchema = Yup.object().shape({
   text: Yup.string().required("La description est obligatoire").min(3, "La description doit avoir au minimum 3 caractères"),
-  amount: Yup.number().typeError("Veuillez saisir un montant valide").required("Le montant est obligatoire")
+  amount: Yup.number().typeError("Veuillez saisir un nombre entier").nullable(false).required("Le montant est obligatoire")
 })
 
 export const AddTransaction = () => {
@@ -29,48 +29,32 @@ export const AddTransaction = () => {
     addTransaction(newTransaction)
   }
 
-  const formik = useFormik({
-    initialValues,
-    onSubmit: expenseSubmit,
-    validationSchema
-  })
-
-  const { text, amount } = formik.values
-
   return (
     <>
       <h5>Add expense</h5>
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-          <div className="form-group">
-            <label htmlFor="text">Description</label>
-            <input
-              type="text"
-              name="text"
-              { ...formik.getFieldProps("text")}
-              placeholder="Enter text..."
-              className="form-control"
-            />
-            {
-              formik.errors.text && formik.touched.text && <span className="text-danger">{formik.errors.text}</span>
-            }
-          </div>
-          <div className="form-group my-2">
-            <label htmlFor="amount">Amount (€)</label>
-            <input
-              type="number"
-              name="amount"
-              { ...formik.getFieldProps("amount")}
-              placeholder="Enter amount..."
-              className="form-control"
-            />
-            {
-              formik.errors.amount && formik.touched.amount && <span className="text-danger">{formik.errors.amount}</span>
-            }
-          </div>
-          <button className="btn btn-primary">Add expense</button>
-        </div>
-      </form>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={expenseSubmit}>
+        {
+          (formik) => (
+            <Form>
+              <div className="form-group">
+                <label htmlFor="text">Description</label>
+                <Field name="text" type="text" className="form-control" />
+                <ErrorMessage name="text" className="text-danger" component="span" />
+              </div>
+              <div className="form-group my-2">
+                <label htmlFor="amount">Amount (€)</label>
+                <Field name="amount" type="number" className="form-control" />
+                <ErrorMessage name="amount" className="text-danger" component="span" />
+              </div>
+              <button className="btn btn-primary"
+                disabled={! formik.isValid}>Add expense</button>
+            </Form>
+          )
+        }
+      </Formik>
     </>
   )
 }
