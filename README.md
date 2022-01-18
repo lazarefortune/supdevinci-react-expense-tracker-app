@@ -1,9 +1,15 @@
 # Expense Tracker App
 
-This i a simple expense tracker app.
+This is a simple expense tracker app.
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+
+```bash
+npm install
+```
+
+Then run the app (run the development server):
 
 ```bash
 npm run dev
