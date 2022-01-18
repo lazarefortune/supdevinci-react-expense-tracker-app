@@ -19,13 +19,13 @@ export const IncomeExpense = () => {
 
   return (
     <tr>
-        <td className="money plus d-flex justify-content-between">
-          <span>TOTAL</span>
-          <span className="text-success">{income} €</span>
+        <td className="">
+          <span>TOTAL</span> <br />
+          <span className="fs-5 text-success">{income} €</span>
         </td>
-        <td className="money minus">
-          <span>TOTAL</span>
-          <span className="text-danger">{expense} €</span>
+        <td className="justify-content-between">
+          <span>TOTAL</span> <br />
+          <span className="fs-5 text-danger">{expense} €</span>
         </td>
     </tr>
   )

@@ -4,20 +4,13 @@ export const Transaction = ({ transaction }) => {
 //   const sign = transaction.amount < 0 ? "-" : "+"
 
   return (
-    // <li className={transaction.amount < 0 ? "minus" : "plus"}>
-    //   {transaction.text}
-    //   <span className="">
-    //     {sign}
-    //     {Math.abs(transaction.amount)}
-    //   </span>
-    //   </li>  
-    <tr>
-      <td className={transaction.amount < 0 ? "text-danger" : "text-success"}>
-        {transaction.amount >= 0 ? transaction.amount + " € " : null}
+    <tr className="text-end">
+      <td>
+        <span className="text-success">{transaction.amount >= 0 ? transaction.amount + " € " : null}</span> <br />
         {transaction.amount >= 0 ? transaction.text : null}
       </td>
-      <td className={transaction.amount < 0 ? "text-danger" : "text-success"}>
-        {transaction.amount < 0 ? transaction.amount + " € " : null}
+      <td>
+        <span className="text-danger">{transaction.amount < 0 ? transaction.amount + " € " : null} <br /></span>
         {transaction.amount < 0 ? transaction.text : null}
       </td>
     </tr>

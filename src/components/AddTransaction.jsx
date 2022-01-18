@@ -31,7 +31,6 @@ export const AddTransaction = () => {
 
   return (
     <>
-      <h5>Add expense</h5>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -39,18 +38,21 @@ export const AddTransaction = () => {
         {
           (formik) => (
             <Form>
-              <div className="form-group">
-                <label htmlFor="text">Description</label>
-                <Field name="text" type="text" className="form-control" />
-                <ErrorMessage name="text" className="text-danger" component="span" />
+              <div className="card p-4">
+              <h5>New expense</h5>
+                <div className="form-group">
+                  <label htmlFor="text">Description</label>
+                  <Field name="text" type="text" className="form-control" />
+                  <ErrorMessage name="text" className="text-danger" component="span" />
+                </div>
+                <div className="form-group my-2">
+                  <label htmlFor="amount">Amount (€)</label>
+                  <Field name="amount" type="number" className="form-control" />
+                  <ErrorMessage name="amount" className="text-danger" component="span" />
+                </div>
+                <button className="btn btn-primary"
+                  disabled={! formik.isValid}>Add expense</button>
               </div>
-              <div className="form-group my-2">
-                <label htmlFor="amount">Amount (€)</label>
-                <Field name="amount" type="number" className="form-control" />
-                <ErrorMessage name="amount" className="text-danger" component="span" />
-              </div>
-              <button className="btn btn-primary"
-                disabled={! formik.isValid}>Add expense</button>
             </Form>
           )
         }

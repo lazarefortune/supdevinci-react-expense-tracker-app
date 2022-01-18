@@ -8,9 +8,9 @@ export const Balance = () => {
   const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2)
 
   return (
-    <tr>
+    <tr className="fs-4">
       <td>Result</td>
-      <td className={total < 0 ? "text-danger" : "text-success"}>{total} €</td>
+      <td className={ "text-end ".concat( total < 0 ? "text-danger" : "text-success" )}>{total} €</td>
     </tr>
   )
 }

@@ -19,7 +19,7 @@ const Layout = ({ children, home }) => {
         <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
           <div className="container-fluid">
             <Link href="/">
-              <a className="navbar-brand">Accueil</a>
+              <a className="navbar-brand">Expense-App</a>
             </Link>
             <button
               className="navbar-toggler"
@@ -35,36 +35,19 @@ const Layout = ({ children, home }) => {
             <div className="collapse navbar-collapse" id="navbarCollapse">
               <ul className="navbar-nav me-auto mb-2 mb-md-0">
                 <li className="nav-item">
-                  <Link href="/achats">
+                  <Link href="/">
                     <a className="nav-link active" aria-current="page">
-                      Achats
+                      Expense
                     </a>
                   </Link>
-                </li>
-                <li className="nav-item">
-                  <Link href="/achats/app">
-                    <a className="nav-link" href="#">
-                      App
-                    </a>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link disabled">Disabled</a>
                 </li>
               </ul>
             </div>
           </div>
         </nav>
 
-        <main className="container">
+        <main className="container mb-3">
           {children}
-          {!home && (
-            <div className={styles.backToHome}>
-              <Link href="/">
-                <a>← Back to home</a>
-              </Link>
-            </div>
-          )}
         </main>
       </GlobalProvider>
     </>

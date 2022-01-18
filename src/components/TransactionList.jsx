@@ -27,8 +27,8 @@ export const TransactionList = () => {
               transaction={transaction}
             ></Transaction>
           ))}
-        <IncomeExpense></IncomeExpense>
-        <Balance></Balance>          
+          <IncomeExpense></IncomeExpense>
+          <Balance></Balance>          
         </tbody>
     </table>
     </>
